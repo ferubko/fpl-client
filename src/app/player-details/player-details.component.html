@@ -1,0 +1,10 @@
+<div *ngIf="player">
+
+  <h2>{{player.firstName | uppercase}} Details</h2>
+  <div>
+    <span>id: </span>{{player.id}}
+    <li *ngFor="let history of playerHistory">
+      <span class="badge">{{history.totalPoints}}</span>
+    </li>
+  </div>
+</div>

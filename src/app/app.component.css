@@ -1,0 +1,50 @@
+.app-sidenav {
+  background-color: #ecf7ee;
+}
+
+.app-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
+}
+
+.app-sidenav:not(.expanded) {
+  cursor: pointer;
+}
+
+.app-sidenav.expanded {
+  border-bottom-color: transparent;
+}
+
+.mat-toolbar.mat-primary {
+  background: rgb(55, 0, 60);
+}
+
+.app-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.content {
+  margin-top: -64px;
+  padding-top: 64px;
+}
+
+.full-width {
+  width: 100% !important;
+}

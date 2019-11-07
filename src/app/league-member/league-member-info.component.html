@@ -1,0 +1,67 @@
+<div *ngIf="leagueMember">
+  <p>League member details</p>
+  <h2 class="mat-h2">{{leagueMember?.playerName}}</h2>
+  <!--<h2 class="mat-h2">Player list</h2>-->
+
+  <!--firstName: String,-->
+  <!--secondName: String,-->
+  <!--news: String,-->
+  <!--totalPoints: number-->
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="memberPlayers">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstName}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="secondName">
+        <mat-header-cell *matHeaderCellDef> secondName</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.secondName}}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="news">
+        <mat-header-cell *matHeaderCellDef> news</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.news}}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="totalPoints">
+        <mat-header-cell *matHeaderCellDef> totalPoints</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.totalPoints}}</mat-cell>
+      </ng-container>
+
+      <!-- The exapnded row contents-->
+      <!-- Expanded Content Column - The detail row is made up of this one column -->
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <!--    <mat-row (click)="test()" *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+               class="element-row"
+               [class.expanded]="expandedElement == row"
+               (click)="cellClicked(row)"></mat-row>
+      <!--<mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"-->
+      <!--[@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"-->
+      <!--style="overflow: hidden">-->
+      <!--</mat-row>-->
+
+    </mat-table>
+  </div>
+</div>
+
+<div *ngIf="!leagueMember">
+  <p>League member details1</p>
+</div>
+<!--<div *ngIf="leagueMember.id==null">-->
+<!--<p>Specify member id</p>-->
+<!---->
+<!--</div>-->
