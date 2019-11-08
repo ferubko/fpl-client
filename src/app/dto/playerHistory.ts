@@ -1,9 +1,9 @@
 export class PlayerHistory {
 
-  private id: number;
-  private opponentTeam: number;
-  private totalPoints: number;
-  private kickoffTime: Date;
+  public id: number;
+  public opponentTeam: number;
+  public totalPoints: number;
+  kickoffTime: Date;
 
   constructor(id: number, totalPoints: number, kickoffTime: Date) {
     this.id = id;

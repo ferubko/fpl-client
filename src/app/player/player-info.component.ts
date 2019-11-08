@@ -16,7 +16,6 @@ import {PlayerHistory} from "../dto/playerHistory";
   selector: 'app-player',
   templateUrl: './player-info.component.html',
   styleUrls: ['./player-info.component.css'],
-
   providers: [PlayerService, AppProgressComponent]
 })
 export class PlayerComponent implements OnInit, OnDestroy {
@@ -32,9 +31,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   players: Player[] = [];
   isDetailsVisible: boolean = false;
 
-  // public selectedTeam: Team;
-  // public selectedPlayType: PlayerType;
-
   public selectedTeam: number;
   public selectedPlayType: number;
 
@@ -47,9 +43,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   public addForm: FormGroup;
   public playerId: number;
-  // public secondName: Player;
-  // public player: Player;
-
 
   constructor(private router: Router, private _fb: FormBuilder, private playerService: PlayerService) {
   }
@@ -73,14 +66,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   searchPlayers() {
     console.log('Search players....');
     this.playerSearchRequest = new PlayerSearchRequest(this.selectedTeam, this.selectedPlayType);
-
     this.players = [];
     this.filteredOptions = null;
     this.myControl = new FormControl('', [Validators.required, Validators.minLength(2)]);
     this.isDetailsVisible = false;
 
-// this.playerId=null;
-// this.player=null;
     this.playerService.getPlayers(this.playerSearchRequest)
       .subscribe(res=> {
           this.players = res;
@@ -98,18 +88,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
     console.log('Finish search players....');
     console.log('Finish search players....' + this.myControl.value);
   }
-
-  // displayFn(player: Player): String | undefined  {
-  // displayFn(player: Player): String  {
-  //   if (player === null) {
-  //     return '';
-  //   }
-  //
-  //   if (player.secondName === null) {
-  //     return '';
-  //   }
-  //   return player.firstName +' ' +player.secondName ;
-  // }
 
   displayFn(id) {
     if (!id) {
@@ -137,7 +115,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.playerService.getPlayerDetails(this.playerId)
         .subscribe(res=> {
             this.selectedPlayer = res;
-            this.selectedPlayerHistory = res.playerHistories;
           },
           error => console.log(error)
         );

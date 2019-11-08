@@ -1,27 +1,7 @@
-<!--<mat-grid-list cols="4" >-->
-<!--<mat-grid-tile>-->
-<!--<mat-form-field>-->
-<!--<mat-label>Player Types</mat-label>-->
-<!--<mat-select [formControl]="playerTypesControl" required>-->
-<!--<mat-option></mat-option>-->
-<!--<mat-option *ngFor="let playerType of playerTypes" [value]="playerType">-->
-<!--{{playerType.pluralName}}-->
-<!--</mat-option>-->
-<!--</mat-select>-->
-<!--&lt;!&ndash;<mat-error *ngIf="playerTypesControl.hasError('required')">Please choose an player type</mat-error>&ndash;&gt;-->
-<!--&lt;!&ndash;<mat-hint>{{playerTypesControl.value?.sound}}</mat-hint>&ndash;&gt;-->
-<!--</mat-form-field>-->
-<!--</mat-grid-tile>-->
-<!--<mat-grid-tile>2</mat-grid-tile>-->
-<!--<mat-grid-tile>3</mat-grid-tile>-->
-<!--<mat-grid-tile>4</mat-grid-tile>-->
-<!--</mat-grid-list>-->
-
 <mat-toolbar>
   <mat-toolbar-row>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <!--<form>-->
     <mat-form-field>
       <mat-label>Teams</mat-label>
       <mat-select [(ngModel)]="selectedTeam" name="team">
@@ -45,56 +25,19 @@
     <mat-divider vertical></mat-divider>
     <button mat-raised-button (click)="searchPlayers()">Search Player</button>
 
-    <!--<button mat-button color="primary" type="submit" name="submit" (click)="searchPlayers()">Search Player</button>-->
-
     <mat-divider vertical></mat-divider>
-
-
-    <!--<mat-form-field>-->
-    <!--<input type="text" matInput placeholder="Players" aria-label="Player"-->
-    <!--[formControl]="myControl" [matAutocomplete]="auto" formControlName="playerId">-->
-    <!--<mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">-->
-    <!--<mat-option *ngFor="let player of filteredOptions | async" [value]="player.firstName">-->
-    <!--{{player.firstName}} {{player.secondName}}-->
-    <!--</mat-option>-->
-    <!--</mat-autocomplete>-->
-    <!--</mat-form-field>-->
-
     <mat-form-field>
-      <!--<input type="text" placeholder="Players" aria-label="Assignee" matInput [formControl]="myControl" [disabled]="!players.length > 0" [matAutocomplete]="auto">-->
-      <!--<input matInput type="text" placeholder="Players" aria-label="Players" [formControl]="myControl" [matAutocomplete]="auto">-->
       <input matInput type="text" placeholder="Players" aria-label="Players" [formControl]="myControl"
              [matAutocomplete]="auto" name="playerId">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
-        <!--<mat-autocomplete #auto="matAutocomplete">-->
         <mat-option *ngFor="let player of filteredOptions| async" [value]="player.id">
           {{player.firstName}} {{player.secondName}}
-          <!--{{player}}-->
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <!--</form>-->
-    <!--<form [formGroup]="addForm" (ngSubmit)="searchPlayerDetails()">-->
-    <!--<mat-form-field>-->
     <button mat-raised-button (click)="showDetails()" [disabled]="!myControl.valid">Details</button>
-    <!--</mat-form-field>-->
-    <!--</form>-->
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="isDetailsVisible">
-    <app-player-details [player]="selectedPlayer" [playerHistory]="selectedPlayerHistory"></app-player-details>
-    <span>Second Line</span>
+    <app-player-details [player]="selectedPlayer"></app-player-details>
   </mat-toolbar-row>
-
-  <!--<mat-toolbar-row>-->
-  <!--<span>Second Line</span>-->
-  <!--<span class="example-spacer"></span>-->
-  <!--<mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>-->
-  <!--</mat-toolbar-row>-->
-
-  <!--<mat-toolbar-row>-->
-  <!--<span>Third Line</span>-->
-  <!--<span class="example-spacer"></span>-->
-  <!--<mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>-->
-  <!--<mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>-->
-  <!--</mat-toolbar-row>-->
 </mat-toolbar>
