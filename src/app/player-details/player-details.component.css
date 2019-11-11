@@ -165,3 +165,28 @@ body, html {
 .form-input-button i {
   color: rebeccapurple;
 }
+
+.image-size{
+  height:auto;
+  width:auto;
+}
+.my-grid-tile .mat-figure {
+  padding-top: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-bottom: 0px !important;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.mat-figure>figure{
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}.example-card {
+   max-width: 400px;
+ }
+
+
+figure{
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}

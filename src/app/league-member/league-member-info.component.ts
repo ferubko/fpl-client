@@ -30,8 +30,8 @@ export class LeagueMemberComponent implements OnInit, OnDestroy {
   appProgressloadPage: AppProgressComponent;
 
   displayedColumns: string[] = ['firstName', 'secondName', 'news', 'totalPoints'];
-  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
-  public expandedElement: any;
+  // isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
+  // public expandedElement: any;
 
   // dataSource = ELEMENT_DATA;
   // league: League;
@@ -93,7 +93,7 @@ export class LeagueMemberComponent implements OnInit, OnDestroy {
               threat: number,
      */
     this.leagueMember = new LeagueMember(1, 1, 'test Name', 2323, [
-      new Player(1, 'pfName', 'psName', '', '177815.jpg',34, 2.9, 2, 0, 2, 0,
+      new Player(1, 'pfName', 'psName', '', '177815.png',34, 2.9, 2, 0, 2, 0,
         74.6,18.3,155.0,new PlayerType(1, 'Defender', 'DEF'), new Team(1, 'Liverpool', 3),    [
         new PlayerHistory(1, 32, new Date()),
         new PlayerHistory(2, 22, new Date()),
