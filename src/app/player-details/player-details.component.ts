@@ -1,13 +1,11 @@
-import {Component, OnInit, OnDestroy, Input} from "@angular/core";
-import { Location } from '@angular/common';
+import {Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {AppProgressComponent} from "../common/app-progress.component";
 import {PlayerService} from "../services/player-info.service";
 import {Player} from "../dto/player";
 import {PlayerHistory} from "../dto/playerHistory";
-import {Router, ActivatedRoute, RouterState} from "@angular/router";
+import {Router} from "@angular/router";
 import {PlayerType} from "../dto/player-types";
 import {Team} from "../dto/team";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-player-details',
@@ -23,77 +21,22 @@ export class PlayerDetailsComponent implements OnInit, OnDestroy {
   @Input()
   playerHistory: PlayerHistory[] = [];
 
-  constructor(private router: Router, private location:Location, private playerService: PlayerService) {
-    // console.log("length" + this.playerHistory.length);
+  constructor(private router: Router, private playerService: PlayerService) {
     this.router.getCurrentNavigation().extras.state;
   }
 
   ngOnInit(): void {
-    if (typeof this.player !== 'undefined' ) {
-      console.log("undefined 0");
+    if (this.player !== undefined) {
       this.playerHistory = this.player.playerHistories;
     } else {
-      const state: Player =history.state;
-      console.log(state.valueOf());     // if(typeof history.state ==='Player'){
-      console.log(state);     // if(typeof history.state ==='Player'){
-
-
-      // if ( state.isPrototypeOf(Player)) {
-      //   console.log('no: ');     // if(typeof history.state ==='Player'){
-      //
-      // }else {
-      //   console.log('yes: ');     // if(typeof history.state ==='Player'){
-      //
-      // }
-
-      this.player=history.state;
-      // if (this.player || typeof this.player === 'undefined') {
-      //     console.log('no: ');     // if(typeof history.state ==='Player'){
-      //
-      // }else {
-      //     console.log('yes: ');     // if(typeof history.state ==='Player'){
-      //
-      // }
-      // console.log('location: ');     // if(typeof history.state ==='Player'){
-      // console.log(this.location.getState().isPrototypeOf(Player));     // if(typeof history.state ==='Player'){
-      // if(this.location.getState().isPrototypeOf(Player)){
-      //   console.log('yes: ');     // if(typeof history.state ==='Player'){
-      //
-      // }else {
-      //   console.log('no: ');     // if(typeof history.state ==='Player'){
-      //
-      // }
-      //   console.log("null 1");
-      //
-      // }
-      // if (history.state instanceof Player){
-      //   console.log("not null ");
-      //
-      // }
-      // console.log("undefined 1");
+      if (history.state.id !== undefined) {
+        this.player = history.state;
+        this.playerHistory = this.player.playerHistories;
+      } else {
+        this.player = this.initPlayer();
+        this.playerHistory = this.player.playerHistories;
+      }
     }
-      // console.log(history.state.toString());
-      // console.log("undefined 1");
-
-      // if (typeof history.state !== 'undefined') {
-
-      // if (history.state instanceof Player) {
-      //   console.log("undefined 2");
-      //   this.player = history.state;
-      //   this.playerHistory = this.player.playerHistories;
-      // } else {
-      //   console.log("undefined 3");
-      //   this.player = this.initPlayer();
-      //   this.playerHistory = this.player.playerHistories;
-      // }
-    // }
-
-
-    // else {
-    //   console.log("undefined 3");
-    // }
-
-    // console.log("length" + this.playerHistory.length);
   }
 
   public initPlayer(): Player {
