@@ -151,6 +151,9 @@ body, html {
 .mat-card {
   padding: 14px;
 }
+.mat-list-item{
+  height: auto;
+}
 
 .form-input-button {
   border: none;
@@ -165,10 +168,22 @@ body, html {
 .form-input-button i {
   color: rebeccapurple;
 }
+.list-header-background{
+  font-weight: 700;
+  background-color: #3b5eaa;
 
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.list-conten-padding{
+  padding-right: 0px;
+  padding-left: 0px;
+}
 .image-size{
   height:auto;
   width:auto;
+  max-height: 200px;
+  max-width: 150px;
 }
 .my-grid-tile .mat-figure {
   padding-top: 0px !important;
@@ -181,8 +196,11 @@ body, html {
 .mat-figure>figure{
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-}.example-card {
+}
+
+.example-card {
    max-width: 400px;
+  padding-bottom: 0px;
  }
 
 
