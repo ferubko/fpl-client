@@ -1,51 +1,128 @@
-<div *ngIf="player" fxLayout="row"  fxLayoutGap="5px"  [style.margin-top]="'12px'">
-<!--<div *ngIf="player" fxFlexLayout="row"  fxLayoutGap="12px"  [style.margin-top]="'12px'">-->
-<!--<div *ngIf="player" layout="row"  fxLayoutGap="12px"  [style.margin-top]="'12px'">-->
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{player.firstName}} {{player.secondName}}</mat-card-title>
-      <mat-card-subtitle>{{player.team?.name}} - {{player.playerType?.pluralName}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image
-         src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p{{player.photo}}"
-         alt={{player.firstName}} class="image-size">
-    <mat-card-content>
-    </mat-card-content>
-  </mat-card>
-    <mat-card class="list-conten-padding">
-      <mat-list >
-        <mat-list-item class="list-header-background"> Total points </mat-list-item>
-        <mat-list-item> {{player.totalPoints}} </mat-list-item>
+<div *ngIf="player">
 
-        <mat-list-item class="list-header-background"><b> Per game</b> </mat-list-item>
-        <mat-list-item> {{player.averagePoints}} </mat-list-item>
+  <div *ngIf="player.news">
+    <mat-list-item > {{player.news}}</mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="row">
+    <!--<div [style.margin-top]="'12px'" [style.margin-left]="'5px'">-->
+    <div fxLayoutGap="5px" [style.margin-top]="'12px'" [style.margin-left]="'5px'">
+    <!--<div>-->
 
-        <mat-list-item class="list-header-background"> <b>Scored </b></mat-list-item>
-        <mat-list-item> {{player.goalsScored}}</mat-list-item>
+      <div fxLayout="row" [style.display]="'block'" fxLayoutGap="5px" style="display:block">
+        <mat-card class="example-card"  style="display:block">
+          <mat-card-content  style="display:block">
+            <div fxLayout="row"  style="display: block">
+              <div style="display:block">
+                <img mat-card-image
+                     src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p{{player.photo}}"
+                     alt={{player.firstName}} class="image-size">
+              </div>
+              <div style="display:block">
+                <mat-list style="display:block">
+                  <mat-list-item>{{player.firstName}} {{player.secondName}}</mat-list-item>
+                  <!--<mat-divider></mat-divider>-->
+                  <mat-list-item>{{player.playerType?.pluralName}}</mat-list-item>
+                  <!--<mat-divider></mat-divider>-->
+                  <mat-list-item>{{player.team?.name}}</mat-list-item>
+                </mat-list>
 
-        <mat-list-item class="list-header-background">  <b>Clean sheets </b></mat-list-item>
-        <mat-list-item> {{player.cleanSheets}}</mat-list-item>
-      </mat-list>
-    </mat-card>
-    <mat-card>
-      <div class="mat-body-2">Ressources</div>
-      <mat-list>
-        <mat-list-item>
-          <div matLine>
-            Sandbox TypeScript :
-            <button mat-button
-                    (click)="playground.click()">Playground</button>
-            <a #playground href="http://www.typescriptlang.org/play/" target="_blank" [style.display]="'none'">TS Playground</a>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div matLine>
-            Documentation :
-            <button mat-button
-                    (click)="documentation.click()">TS Doc</button>
-            <a #documentation href="http://www.typescriptlang.org/docs/home.html" target="_blank" [style.display]="'none'">TS Doc</a>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </mat-card>
+
+              </div>
+            </div>
+
+          </mat-card-content>
+
+        </mat-card>
+        <!--<mat-card class="example-card" [style.width]="'100%'" >-->
+        <!--<mat-card-content [style.width]="'100%'" >-->
+        <!--<mat-list>-->
+        <!--<mat-list-item>{{player.firstName}} {{player.secondName}}</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item>{{player.playerType?.pluralName}}</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item>{{player.team?.name}}</mat-list-item>-->
+        <!--</mat-list>-->
+        <!--</mat-card-content>-->
+        <!--</mat-card>-->
+      </div>
+      <div fxLayout="row" fxLayoutGap="5px" [style.margin-top]="'12px'">
+        <mat-card class="list-conten-padding">
+          <mat-list>
+            <mat-list-item class="list-header-background">Total points</mat-list-item>
+            <mat-list-item> {{player.totalPoints}}</mat-list-item>
+            <mat-list-item class="list-header-background">Per game</mat-list-item>
+            <mat-list-item> {{player.averagePoints}}</mat-list-item>
+          </mat-list>
+        </mat-card>
+        <mat-card class="list-conten-padding">
+          <mat-list>
+            <mat-list-item class="list-header-background">Scored</mat-list-item>
+            <mat-list-item> {{player.goalsScored}}</mat-list-item>
+            <mat-list-item class="list-header-background">Assists</mat-list-item>
+            <mat-list-item> {{player.assists}}</mat-list-item>
+          </mat-list>
+        </mat-card>
+        <mat-card class="list-conten-padding">
+          <mat-list>
+            <mat-list-item class="list-header-background">Influence</mat-list-item>
+            <mat-list-item> {{player.influence}}</mat-list-item>
+            <mat-list-item class="list-header-background">Creativity</mat-list-item>
+            <mat-list-item> {{player.creativity}}</mat-list-item>
+            <mat-list-item class="list-header-background">Threat</mat-list-item>
+            <mat-list-item> {{player.threat}}</mat-list-item>
+          </mat-list>
+        </mat-card>
+        <mat-card class="list-conten-padding">
+          <mat-list>
+            <mat-list-item class="list-header-background">Clean sheets</mat-list-item>
+            <mat-list-item> {{player.cleanSheets}}</mat-list-item>
+            <!--<div *ngIf="player.penaltiesSaved">-->
+              <!--<mat-list-item class="list-header-background">Penalties Saved</mat-list-item>-->
+              <!--<mat-list-item> {{player.penaltiesSaved}}</mat-list-item>-->
+            <!--</div>-->
+          </mat-list>
+        </mat-card>
+      </div>
+    </div>
+    <!--<div class="row">-->
+    <!--<div class="col col-gt2" *ngFor="let chart of charts" [ngClass]="'col-' + chart.width">-->
+    <!--<div>-->
+    <!--<canvas baseChart-->
+    <!--[data]="chart.data"-->
+    <!--[datasets]="chart.datasets"-->
+    <!--[labels]="chart.labels"-->
+    <!--[chartType]="chart.type"-->
+    <!--[legend]="chart.legend"-->
+    <!--[options]="chart.options"-->
+    <!--[colors]="chart.colors"-->
+    <!--style="display: block; width: 600%; height: 100%;">-->
+
+    <!--</canvas>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<mat-card class="list-conten-padding">-->
+    <!--<mat-card-content>-->
+    <div  fxLayoutGap="5px" [style.margin-top]="'12px'"  *ngIf="playerHistory">
+      <mat-card class="example-card1">
+        <mat-card-content class="example-card1">
+          <canvas baseChart
+                  [data]="barChartData"
+                  [datasets]="barChartDataSet"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="'line'"
+                  [colors]="lineChartColors"
+                  style="display: block; width: 100%; height: 100%;">
+          </canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!--</div>-->
+
+    <!--</mat-card-content>-->
+    <!--</mat-card>-->
+  </div>
 </div>

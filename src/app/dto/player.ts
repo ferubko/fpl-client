@@ -5,21 +5,21 @@ import {Team} from "./team";
 export class Player {
 
   id: number;
-  firstName: String;
-  secondName: String;
-  news: String;
-  photo: String;
-  totalPoints: number;
-  averagePoints: number;
-  goalsScored: number;
-  assists: number;
-  cleanSheets: number;
-  penaltiesSaved: number;
+    firstName: String;
+    secondName: String;
+    news: String;
+    photo: String;
+    totalPoints: number;
+    averagePoints: number;
+    goalsScored: number;
+    assists: number;
+    cleanSheets: number;
+    penaltiesSaved: number;
   influence: number;
   creativity: number;
   threat: number;
-  playerType: PlayerType;
-  team: Team;
+    playerType: PlayerType;
+    team: Team;
   playerHistories: PlayerHistory[];
 
   constructor(id: number,

@@ -3,11 +3,13 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {League} from "../dto/league";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class LeagueService {
   private localhost = "http://localhost:8080/leagueMember";
   private _leagueMember = "/all";
+  private _details = "/details/";
 
   constructor(private http: HttpClient) {
   }
@@ -17,6 +19,13 @@ export class LeagueService {
 
     return this.http.get<League>(url)
       .pipe(catchError(this.handleError));
+  }
+
+  getLeagueMemberDetails(memberId: number): Observable<any> {
+    let headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
+    let options = {headers: headers};
+    let url = this.localhost + this._details + memberId;
+    return this.http.post(url, options);
   }
 
   handleError(error: HttpErrorResponse) {

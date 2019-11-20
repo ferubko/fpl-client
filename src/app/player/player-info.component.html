@@ -1,43 +1,47 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-  </mat-toolbar-row>
-  <mat-toolbar-row>
-    <mat-form-field>
-      <mat-label>Teams</mat-label>
-      <mat-select [(ngModel)]="selectedTeam" name="team">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let team of teams" [value]="team.id">
-          {{team.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<div>
+  <mat-toolbar>
+    <mat-toolbar-row>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <mat-form-field>
+        <mat-label>Teams</mat-label>
+        <mat-select [(ngModel)]="selectedTeam" name="team">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let team of teams" [value]="team.id">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-divider vertical></mat-divider>
-    <mat-form-field>
-      <mat-label>Player Types</mat-label>
-      <mat-select [(ngModel)]="selectedPlayType" name="playerType">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let playerType of playerTypes" [value]="playerType.id">
-          {{playerType.pluralName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-divider vertical></mat-divider>
-    <button mat-raised-button (click)="searchPlayers()">Search Player</button>
+      <mat-divider vertical></mat-divider>
+      <mat-form-field>
+        <mat-label>Player Types</mat-label>
+        <mat-select [(ngModel)]="selectedPlayType" name="playerType">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let playerType of playerTypes" [value]="playerType.id">
+            {{playerType.pluralName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-divider vertical></mat-divider>
+      <button mat-raised-button (click)="searchPlayers()">Search Player</button>
 
-    <mat-divider vertical></mat-divider>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Players" aria-label="Players" [formControl]="myControl"
-             [matAutocomplete]="auto" name="playerId">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
-        <mat-option *ngFor="let player of filteredOptions| async" [value]="player.id">
-          {{player.firstName}} {{player.secondName}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <button mat-raised-button (click)="showDetails()" [disabled]="!myControl.valid">Details</button>
-  </mat-toolbar-row>
-  <mat-toolbar-row *ngIf="isDetailsVisible">
-    <app-player-details [player]="selectedPlayer"></app-player-details>
-  </mat-toolbar-row>
-</mat-toolbar>
+      <mat-divider vertical></mat-divider>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Players" aria-label="Players" [formControl]="myControl"
+               [matAutocomplete]="auto" name="playerId">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+          <mat-option *ngFor="let player of filteredOptions| async" [value]="player.id">
+            {{player.firstName}} {{player.secondName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button (click)="showDetails()" [disabled]="!myControl.valid">Details</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<mat-divider></mat-divider>
+<div *ngIf="isDetailsVisible">
+  <app-player-details [player]="selectedPlayer"></app-player-details>
+</div>

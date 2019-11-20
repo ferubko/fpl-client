@@ -47,19 +47,20 @@ export class LeagueComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('Get league members');
-    this.leagueMembers = [new LeagueMember(1, 1, 'test Name', 2323, [
-      new Player(1, 'pfName', 'psName', '', '177815.jpg', 34, 2.9, 2, 0, 2, 0,
-        74.6, 18.3, 155.0, new PlayerType(1, 'Defender', 'DEF'), new Team(1, 'Liverpool', 3), [
-          new PlayerHistory(1, 32, new Date()),
-          new PlayerHistory(2, 22, new Date()),
-          new PlayerHistory(3, 62, new Date()),
-          new PlayerHistory(4, 13, new Date()),
-          new PlayerHistory(5, 9, new Date()),
-        ])])];
-    // this.leagueService.getLeagueInfo().subscribe(res => {
-    //   this.league = res;
-    //   this.leagueName = this.league.name;
-    // this.leagueMembers = this.league.leagueMembers;
+    // this.leagueMembers = [new LeagueMember(1, 1, 'test Name', 2323, [
+    //   new Player(1, 'pfName', 'psName', '', '177815.jpg', 34, 2.9, 2, 0, 2, 0,
+    //     74.6, 18.3, 155.0, new PlayerType(1, 'Defender', 'DEF'), new Team(1, 'Liverpool', 3), [
+    //       new PlayerHistory(1, 32, new Date()),
+    //       new PlayerHistory(2, 22, new Date()),
+    //       new PlayerHistory(3, 62, new Date()),
+    //       new PlayerHistory(4, 13, new Date()),
+    //       new PlayerHistory(5, 9, new Date()),
+    //     ])])];
+    this.leagueService.getLeagueInfo().subscribe(res => {
+      this.league = res;
+      this.leagueName = this.league.name;
+      this.leagueMembers = this.league.leagueMembers;
+    });
     // this.leagueMembers = [new LeagueMember(1, 1, 'test Name', 2323, [
     //   new Player(1, 'pfName', 'psName', '', 34, [
     //     new PlayerHistory(1, 32, new Date()),

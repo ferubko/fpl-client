@@ -8,13 +8,10 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item class="mat-list-item">
-        <div>
           <div class="mat-ripple"></div>
-          <a mat-button routerLinkActive="active-link">
-            <!--[routerLink]="/">-->
+          <a mat-button routerLinkActive="active-link" [routerLink]="'/player'">
             <h4 mat-line>View Players</h4>
           </a>
-        </div>
       </mat-list-item>
 
       <mat-list-item>
@@ -26,18 +23,12 @@
       </mat-list-item>
 
       <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
-        <mat-list-item class="mat-list-item" *ngFor="let leagueMember of leagueMembers">
-          <!--<div>-->
-          <!--<div class=" mat-ripple"></div>-->
-          <!--<a mat-button routerLinkActive="active-link"-->
-          <a mat-button
-             [routerLink]="['/league-member',  leagueMember.id]" [state]=leagueMember>
+
+        <mat-list-item  mat-button class="mat-list-item" *ngFor="let leagueMember of leagueMembers"  [routerLink]="['/league-member',  leagueMember.entry]" [state]=leagueMember>
             <h4 mat-line>{{leagueMember.rank}}</h4>
             <h4 mat-line>{{leagueMember.playerName}}</h4>
             <p mat-line> {{leagueMember.entryName}} </p>
             <p mat-line> {{leagueMember.total}} </p>
-          </a>
-          <!--</div>-->
         </mat-list-item>
       </mat-nav-list>
 

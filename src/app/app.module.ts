@@ -12,6 +12,8 @@ import {RouterModule} from "@angular/router";
 import {PlayerComponent} from "./player/player-info.component";
 import {LeagueMemberComponent} from "./league-member/league-member-info.component";
 import {PlayerDetailsComponent} from "./player-details/player-details.component";
+import {ChartsModule} from "ng2-charts";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {PlayerDetailsComponent} from "./player-details/player-details.component"
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    CoreMaterialModule
+    CoreMaterialModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,44 +1,12 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="push" class="app-sidenav" role="navigation">
-    <!--<mat-card>-->
-    <!--<mat-card-header>-->
-    <!--<mat-card-title>-->
-    <!--<h2 class="mat-h2">Niko League</h2>-->
-    <!--</mat-card-title>-->
-    <!--</mat-card-header>-->
-    <!--<mat-card-content>-->
-    <!--<mat-list>-->
-    <!--<mat-list-item class="mat-list-item" *ngFor="let producer of producers">-->
-    <!--<div>-->
-    <!--<div class=" mat-ripple"></div>-->
-    <!--<a mat-button routerLinkActive="active-link"-->
-    <!--[routerLink]="['/api/producer',  producer.name, producer.spreadsheetId]">{{producer.name}}</a>-->
-    <!--<button mat-icon-button (click)="openEditDialog(producer)">-->
-    <!--<i class="material-icons">mode_edit</i>-->
-    <!--</button>-->
-    <!--<button mat-icon-button (click)="removeProducer(producer.name)">-->
-    <!--<i class="material-icons">delete</i>-->
-    <!--</button>-->
-    <!--</div>-->
-    <!--</mat-list-item>-->
     <app-league></app-league>
-    <!--<mat-divider aria-orientation="horizontal" class="mat-divider" role="separator"></mat-divider>-->
-    <!--</mat-list>-->
-    <!--</mat-card-content>-->
-    <!--<mat-card-footer>-->
-    <!--<button mat-fab color="primary" (click)="openAddDialog()"><i class="material-icons">add</i></button>-->
-    <!--</mat-card-footer>-->
-    <!--</mat-card>-->
-    <!---->
   </mat-sidenav>
 
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <!--<h1>Step.mk.ua</h1>-->
-    <!--<div class="full-width">-->
-    <!--</div>-->
   </mat-toolbar>
   <div class="content">
     <div>

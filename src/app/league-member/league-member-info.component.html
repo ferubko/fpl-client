@@ -5,20 +5,20 @@
   <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="memberPlayers">
       <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.firstName}}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="secondName">
-        <mat-header-cell *matHeaderCellDef> secondName</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Second Name</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.secondName}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="news">
-        <mat-header-cell *matHeaderCellDef> news</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>News</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.news}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="totalPoints">
-        <mat-header-cell *matHeaderCellDef> totalPoints</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Total Points</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.totalPoints}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
