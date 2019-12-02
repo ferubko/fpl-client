@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, ChangeDetectorRef} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
@@ -16,33 +16,33 @@ export class PlayerService {
   private _search = "/search";
   private _details = "/details/";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {
   }
 
 
   getPlayerHistory(): Observable<any> {
-    let url = this.localhost + this._playerHistory;
+    const url = this.localhost + this._playerHistory;
     return this.http.get<PlayerHistory>(url)
       .pipe(catchError(this.handleError));
   }
 
   getPlayerTypes(): Observable<any> {
-    let url = this.localhost + this._playerTypes;
+    const url = this.localhost + this._playerTypes;
     return this.http.get<PlayerType>(url)
       .pipe(catchError(this.handleError));
   }
 
   getTeams(): Observable<any> {
-    let url = this.localhost + this._teams;
+    const url = this.localhost + this._teams;
     return this.http.get<Team>(url)
       .pipe(catchError(this.handleError));
   }
 
   getPlayers(playerSearch: PlayerSearchRequest): Observable<any> {
-    let body = JSON.stringify(playerSearch);
-    let headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
-    let options = {headers: headers};
-    let url = this.localhost + this._search;
+    const body = JSON.stringify(playerSearch);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
+    const options = {headers: headers};
+    const url = this.localhost + this._search;
 
     return this.http.post(url, body, options);
   }
@@ -61,10 +61,9 @@ export class PlayerService {
   }
 
   getPlayerDetails(playerId: number): Observable<any> {
-    // let body = JSON.stringify("{playerId:"+playerId+"}");
-    let headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
-    let options = {headers: headers};
-    let url = this.localhost + this._details + playerId;
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
+    const options = {headers: headers};
+    const url = this.localhost + this._details + playerId;
     // return this.http.post(url, body, options);
     return this.http.post(url, options);
   }

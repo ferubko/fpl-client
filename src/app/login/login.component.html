@@ -1,0 +1,35 @@
+<div class="full-size">
+</div>
+<div class="container">
+  <div class="card card-container">
+    <mat-card class="example-card">
+      <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+      <p id="profile-name" class="profile-name-card"></p>
+      <h1>Sign in</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
+        <mat-form-field class="input-item-full-width">
+          <input matInput required placeholder="Username" formControlName="username"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+          <mat-error *ngIf="submitted && f.username.errors">Username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-item-full-width">
+          <input matInput formControlName="password" placeholder="Password"
+                 [type]="hide ? 'password' : 'text'" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="submitted && f.password.errors">Username is required</mat-error>
+        </mat-form-field>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-button type="submit" name="submit">Login</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </mat-card>
+  </div>
+</div>

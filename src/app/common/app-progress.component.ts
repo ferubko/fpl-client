@@ -33,7 +33,6 @@ export class AppProgressComponent {
   }
 
   startProgress() {
-    console.log("Start progress");
     if (!this.running) {
       this.progressType = 'primary';
       this.running = true;
@@ -48,6 +47,5 @@ export class AppProgressComponent {
     this.running = false;
     this._timeOuts.forEach(handle => clearTimeout(handle));
     this._timeOuts = [];
-    console.log("Stop progress");
   }
 }

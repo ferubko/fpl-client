@@ -21,8 +21,6 @@ import {PlayerHistory} from "../dto/playerHistory";
 export class PlayerComponent implements OnInit, OnDestroy {
   @ViewChild('appProgress', {static: false})
   appProgress: AppProgressComponent;
-  @ViewChild('appProgressloadPage', {static: false})
-  appProgressloadPage: AppProgressComponent;
 
   playerTypes: PlayerType[] = [];
   selectedPlayer: Player;
@@ -50,20 +48,23 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('Init Teams');
     this.playerService.getTeams().subscribe(res=> {
+      this.appProgress.startProgress();
       this.teams = res;
     });
 
     console.log('Init Player Types');
     this.playerService.getPlayerTypes().subscribe(res=> {
       this.playerTypes = res;
+      this.appProgress.stopProgress();
     });
     this.addForm = this._fb.group({
       playerId: new FormControl('', [Validators.required, Validators.minLength(1)])
     });
-    console.log("Finished init...")
+    console.log("Finished init...");
   }
 
   searchPlayers() {
+    this.appProgress.startProgress();
     console.log('Search players....');
     this.playerSearchRequest = new PlayerSearchRequest(this.selectedTeam, this.selectedPlayType);
     this.players = [];
@@ -74,6 +75,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.playerService.getPlayers(this.playerSearchRequest)
       .subscribe(res=> {
           this.players = res;
+          this.appProgress.stopProgress();
         },
         error => console.log(error)
       );
@@ -86,7 +88,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
         map(name => name ? this._filter(name) : this.players.slice())
       );
     console.log('Finish search players....');
-    console.log('Finish search players....' + this.myControl.value);
   }
 
   displayFn(id) {
@@ -94,14 +95,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
       return '';
     }
     this.playerId = id;
-    console.log("this.playerId=: " + this.playerId);
-
-    let index = this.players.findIndex(state => state.id === id);
+    const index = this.players.findIndex(state => state.id === id);
+    this.selectedPlayer = this.players[index];
     return this.players[index].firstName + ' ' + this.players[index].secondName;
   }
 
   private _filter(player: String): Player[] {
-    console.log("player: " + player.toString());
     if (player === undefined) {
       return this.players;
     }
@@ -110,16 +109,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   showDetails() {
-    if (this.playerId) {
+    if (this.selectedPlayer && this.selectedPlayer !== undefined) {
       this.isDetailsVisible = true;
-      this.playerService.getPlayerDetails(this.playerId)
-        .subscribe(res=> {
-            this.selectedPlayer = res;
-          },
-          error => console.log(error)
-        );
     } else {
-      console.log("no id ");
       this.isDetailsVisible = false;
     }
   }

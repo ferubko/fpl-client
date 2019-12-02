@@ -1,18 +1,15 @@
 <div *ngIf="player">
 
   <div *ngIf="player.news">
-    <mat-list-item > {{player.news}}</mat-list-item>
+    <mat-list-item> {{player.news}}</mat-list-item>
     <mat-divider></mat-divider>
   </div>
   <div fxLayout="row">
-    <!--<div [style.margin-top]="'12px'" [style.margin-left]="'5px'">-->
     <div fxLayoutGap="5px" [style.margin-top]="'12px'" [style.margin-left]="'5px'">
-    <!--<div>-->
-
       <div fxLayout="row" [style.display]="'block'" fxLayoutGap="5px" style="display:block">
-        <mat-card class="example-card"  style="display:block">
-          <mat-card-content  style="display:block">
-            <div fxLayout="row"  style="display: block">
+        <mat-card class="example-card" style="display:block">
+          <mat-card-content style="display:block">
+            <div fxLayout="row" style="display: block">
               <div style="display:block">
                 <img mat-card-image
                      src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p{{player.photo}}"
@@ -21,30 +18,13 @@
               <div style="display:block">
                 <mat-list style="display:block">
                   <mat-list-item>{{player.firstName}} {{player.secondName}}</mat-list-item>
-                  <!--<mat-divider></mat-divider>-->
                   <mat-list-item>{{player.playerType?.pluralName}}</mat-list-item>
-                  <!--<mat-divider></mat-divider>-->
                   <mat-list-item>{{player.team?.name}}</mat-list-item>
                 </mat-list>
-
-
               </div>
             </div>
-
           </mat-card-content>
-
         </mat-card>
-        <!--<mat-card class="example-card" [style.width]="'100%'" >-->
-        <!--<mat-card-content [style.width]="'100%'" >-->
-        <!--<mat-list>-->
-        <!--<mat-list-item>{{player.firstName}} {{player.secondName}}</mat-list-item>-->
-        <!--<mat-divider></mat-divider>-->
-        <!--<mat-list-item>{{player.playerType?.pluralName}}</mat-list-item>-->
-        <!--<mat-divider></mat-divider>-->
-        <!--<mat-list-item>{{player.team?.name}}</mat-list-item>-->
-        <!--</mat-list>-->
-        <!--</mat-card-content>-->
-        <!--</mat-card>-->
       </div>
       <div fxLayout="row" fxLayoutGap="5px" [style.margin-top]="'12px'">
         <mat-card class="list-conten-padding">
@@ -77,34 +57,11 @@
           <mat-list>
             <mat-list-item class="list-header-background">Clean sheets</mat-list-item>
             <mat-list-item> {{player.cleanSheets}}</mat-list-item>
-            <!--<div *ngIf="player.penaltiesSaved">-->
-              <!--<mat-list-item class="list-header-background">Penalties Saved</mat-list-item>-->
-              <!--<mat-list-item> {{player.penaltiesSaved}}</mat-list-item>-->
-            <!--</div>-->
           </mat-list>
         </mat-card>
       </div>
     </div>
-    <!--<div class="row">-->
-    <!--<div class="col col-gt2" *ngFor="let chart of charts" [ngClass]="'col-' + chart.width">-->
-    <!--<div>-->
-    <!--<canvas baseChart-->
-    <!--[data]="chart.data"-->
-    <!--[datasets]="chart.datasets"-->
-    <!--[labels]="chart.labels"-->
-    <!--[chartType]="chart.type"-->
-    <!--[legend]="chart.legend"-->
-    <!--[options]="chart.options"-->
-    <!--[colors]="chart.colors"-->
-    <!--style="display: block; width: 600%; height: 100%;">-->
-
-    <!--</canvas>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<mat-card class="list-conten-padding">-->
-    <!--<mat-card-content>-->
-    <div  fxLayoutGap="5px" [style.margin-top]="'12px'"  *ngIf="playerHistory">
+    <div fxLayoutGap="5px" [style.margin-top]="'12px'">
       <mat-card class="example-card1">
         <mat-card-content class="example-card1">
           <canvas baseChart
@@ -120,9 +77,5 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!--</div>-->
-
-    <!--</mat-card-content>-->
-    <!--</mat-card>-->
   </div>
 </div>

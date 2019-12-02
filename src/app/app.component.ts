@@ -19,7 +19,6 @@ export class AppComponent {
         this.router.navigated = false;
         window.scrollTo(0, 0);
         var title = this.getTitle(router.routerState, router.routerState.root).join('-');
-        console.log('title', title);
         titleService.setTitle(title);
       }
     });

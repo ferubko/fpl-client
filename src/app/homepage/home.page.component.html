@@ -1,0 +1,17 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav" role="navigation">
+    <app-league></app-league>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="flex-spacer"></div>
+    <button mat-button (click)="logout()" *ngIf="isSignedIn">Logout</button>
+  </mat-toolbar>
+  <div class="content">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>

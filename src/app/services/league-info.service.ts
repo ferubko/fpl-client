@@ -1,9 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {League} from "../dto/league";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
-import {HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class LeagueService {
@@ -15,16 +14,16 @@ export class LeagueService {
   }
 
   getLeagueInfo(): Observable<any> {
-    let url = this.localhost + this._leagueMember;
+    const url = this.localhost + this._leagueMember;
 
     return this.http.get<League>(url)
       .pipe(catchError(this.handleError));
   }
 
   getLeagueMemberDetails(memberId: number): Observable<any> {
-    let headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
-    let options = {headers: headers};
-    let url = this.localhost + this._details + memberId;
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'responseType': 'blob'});
+    const options = {headers: headers};
+    const url = this.localhost + this._details + memberId;
     return this.http.post(url, options);
   }
 

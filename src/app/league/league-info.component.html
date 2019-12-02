@@ -8,12 +8,11 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item class="mat-list-item">
-          <div class="mat-ripple"></div>
-          <a mat-button routerLinkActive="active-link" [routerLink]="'/player'">
-            <h4 mat-line>View Players</h4>
-          </a>
+        <div class="mat-ripple"></div>
+        <a mat-button routerLinkActive="active-link" [routerLink]="'/fpl/player'">
+          <h4 mat-line>View Players</h4>
+        </a>
       </mat-list-item>
-
       <mat-list-item>
         <a mat-button routerLinkActive="active-link" (click)="toggleMenu()">
           League Members
@@ -21,18 +20,15 @@
           <mat-icon *ngIf="showMenu">expand_more</mat-icon>
         </a>
       </mat-list-item>
-
       <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
-
-        <mat-list-item  mat-button class="mat-list-item" *ngFor="let leagueMember of leagueMembers"  [routerLink]="['/league-member',  leagueMember.entry]" [state]=leagueMember>
-            <h4 mat-line>{{leagueMember.rank}}</h4>
-            <h4 mat-line>{{leagueMember.playerName}}</h4>
-            <p mat-line> {{leagueMember.entryName}} </p>
-            <p mat-line> {{leagueMember.total}} </p>
+        <mat-list-item mat-button class="mat-list-item" *ngFor="let leagueMember of leagueMembers"
+                       [routerLink]="['/fpl/league-member',  leagueMember.entry]" [state]=leagueMember>
+          <h4 mat-line>{{leagueMember.rank}}</h4>
+          <h4 mat-line>{{leagueMember.playerName}}</h4>
+          <p mat-line> {{leagueMember.entryName}} </p>
+          <p mat-line> {{leagueMember.total}} </p>
         </mat-list-item>
       </mat-nav-list>
-
-
       <mat-divider aria-orientation="horizontal" class="mat-divider" role="separator"></mat-divider>
     </mat-list>
   </mat-card-content>

@@ -1,4 +1,5 @@
 <div>
+  <app-progress-bar #appProgress></app-progress-bar>
   <mat-toolbar>
     <mat-toolbar-row>
     </mat-toolbar-row>
@@ -27,9 +28,9 @@
       <button mat-raised-button (click)="searchPlayers()">Search Player</button>
 
       <mat-divider vertical></mat-divider>
-      <mat-form-field>
+      <mat-form-field style="min-width: 200px">
         <input matInput type="text" placeholder="Players" aria-label="Players" [formControl]="myControl"
-               [matAutocomplete]="auto" name="playerId">
+               [matAutocomplete]="auto" name="playerId" style="min-width: 200px">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
           <mat-option *ngFor="let player of filteredOptions| async" [value]="player.id">
             {{player.firstName}} {{player.secondName}}
