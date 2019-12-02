@@ -26,6 +26,7 @@ export class LeagueMemberComponent implements OnInit, OnDestroy {
   appProgressloadPage: AppProgressComponent;
 
   displayedColumns: string[] = ['firstName', 'secondName', 'news', 'totalPoints'];
+  public expandedElement: any;
   leagueMember: LeagueMember| null;
   memberPlayers: Player[] = [];
   leagueMemberId: number;

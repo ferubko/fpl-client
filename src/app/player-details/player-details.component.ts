@@ -110,7 +110,7 @@ export class PlayerDetailsComponent implements OnInit, OnDestroy {
     }
   };
 
-  private lineChartColors: Array<any> = [
+  public lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.5)',
       borderColor: 'rgba(148,159,177,1)',
