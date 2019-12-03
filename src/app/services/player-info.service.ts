@@ -9,7 +9,7 @@ import {PlayerSearchRequest} from "../dto/player-search-request";
 
 @Injectable()
 export class PlayerService {
-  private localhost = "https://fantasy-pl.herokuapp.com/player";
+  private localhost = "https://fpldb.herokuapp.com/player";
   private _playerHistory = "/history";
   private _playerTypes = "/types";
   private _teams = "/teams";

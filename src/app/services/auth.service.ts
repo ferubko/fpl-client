@@ -8,7 +8,7 @@ import {User} from "../dto/user";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private localhost = "https://fantasy-pl.herokuapp.com/api/auth/login";
+  private localhost = "https://fpldb.herokuapp.com/api/auth/login";
 
   constructor(private httpClient: HttpClient) {
   }

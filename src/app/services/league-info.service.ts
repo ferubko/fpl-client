@@ -6,7 +6,7 @@ import {Observable, throwError} from "rxjs";
 
 @Injectable()
 export class LeagueService {
-  private localhost = "https://fantasy-pl.herokuapp.com/leagueMember";
+  private localhost = "https://fpldb.herokuapp.com/leagueMember";
   private _leagueMember = "/all";
   private _details = "/details/";
 
